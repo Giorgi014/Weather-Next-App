@@ -1,1 +1,30 @@
 @import "tailwindcss";
+
+:root {
+  --btn_bg_lite: linear-gradient(
+    to right,
+    rgb(251, 146, 60),
+    rgb(250, 204, 21),
+    rgb(252, 211, 77)
+  );
+  --btn_bg_bark: linear-gradient(
+    to right,
+    rgb(79, 70, 229),
+    rgb(147, 51, 234),
+    rgb(37, 99, 235)
+  );
+}
+
+@layer utilities {
+  .max_width {
+    margin: 50px auto;
+    width: 90%;
+    max-width: 1920px;
+  }
+  .btn_bg_lite {
+    background: var(--btn_bg_lite);
+  }
+  .btn_bg_bark {
+    background: var(--btn_bg_bark);
+  }
+}
