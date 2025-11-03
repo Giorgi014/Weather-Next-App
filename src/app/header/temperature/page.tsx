@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "../../hooks/themeProvider";
 
-export const TemperatureButton = () => {
+const TemperatureButton = () => {
   const [temperature, setTemperature] = useState<boolean>(false);
   const [isDark, setIsDark] = useState<boolean>(false);
 
@@ -53,3 +53,5 @@ export const TemperatureButton = () => {
     </button>
   );
 };
+
+export default TemperatureButton;

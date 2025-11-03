@@ -1,8 +1,8 @@
 "use client";
 
 import { useTheme } from "./hooks/themeProvider";
-import { Header } from "./header/page";
-import { Main } from "./main/page";
+import Header from "./header/page";
+import Main from "./main/page";
 import { useEffect, useState } from "react";
 
 export default function Home() {

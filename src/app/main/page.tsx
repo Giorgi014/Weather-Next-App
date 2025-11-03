@@ -1,9 +1,11 @@
-import { Search } from "../search/page";
+import Search from "../search/page";
 
-export const Main = () => {
+const Main = () => {
   return (
     <main>
       <Search />
     </main>
   );
 };
+
+export default Main;

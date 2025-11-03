@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "../../hooks/themeProvider";
 
-export const ModeButton = () => {
+const ModeButton = () => {
   const [dark, setDark] = useState<boolean>(false);
   const [isDark, setIsDark] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
@@ -59,3 +59,5 @@ export const ModeButton = () => {
     </button>
   );
 };
+
+export default ModeButton;

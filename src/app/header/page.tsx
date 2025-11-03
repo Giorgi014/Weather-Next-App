@@ -1,7 +1,7 @@
-import { ModeButton } from "./mode/page";
-import { TemperatureButton } from "./temperature/page";
+import ModeButton from "./mode/page";
+import TemperatureButton from "./temperature/page";
 
-export const Header = () => {
+const Header = () => {
   return (
     <header className="max_width flex justify-center items-center flex-col relative">
       <div className="flex justify-between items-center absolute right-0 gap-2.5">
@@ -13,3 +13,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;
