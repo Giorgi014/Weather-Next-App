@@ -2,16 +2,15 @@
 
 import {
   createContext,
-  Dispatch,
   ReactNode,
-  SetStateAction,
+  useContext,
   useEffect,
   useState,
 } from "react";
 
 export type ContextType = {
   theme: boolean;
-  setTheme: Dispatch<SetStateAction<boolean>>;
+  setTheme: (value: boolean) => void;
 };
 
 type ProviderProps = {
@@ -20,18 +19,28 @@ type ProviderProps = {
 
 export const ThemeContext = createContext<ContextType | undefined>(undefined);
 
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
+  return context;
+};
+
 export const ThemeProvider = ({ children }: ProviderProps) => {
-  const [theme, setTheme] = useState<boolean>(
-    JSON.parse(localStorage.getItem("isDark") as string)
-      ? JSON.parse(localStorage.getItem("isDark") as string)
-      : true
-  );
+  const [theme, setTheme] = useState<boolean>(() => {
+    if (typeof window === "undefined") return;
+
+    const stored = localStorage.getItem("isDark");
+    return stored ? JSON.parse(stored) : false;
+  });
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     localStorage.setItem("isDark", JSON.stringify(theme));
   }, [theme]);
 
-  let obj: ContextType = {
+  const obj: ContextType = {
     theme,
     setTheme,
   };

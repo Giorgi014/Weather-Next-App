@@ -33,4 +33,10 @@
   .btn_bg_bark {
     background: var(--btn_bg_bark);
   }
+  .sunny_day {
+    background: var(--sunny_day);
+  }
+  .moon_night {
+    background: var(--moon_night);
+  }
 }

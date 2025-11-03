@@ -1,21 +1,27 @@
 "use client";
 
-import { useContext, useState } from "react";
-import { ThemeContext } from "../../context/themeProvider";
+import { useEffect, useState } from "react";
+import { useTheme } from "../../hooks/themeProvider";
 
 export const TemperatureButton = () => {
   const [temperature, setTemperature] = useState<boolean>(false);
-  const { theme } = useContext(ThemeContext);
+  const [isDark, setIsDark] = useState<boolean>(false);
+
+  const { theme } = useTheme();
 
   const handleTemperature = () => {
     setTemperature(!temperature);
   };
 
+  useEffect(() => {
+    setIsDark(true);
+  }, []);
+
+  const themeColor = isDark ? (theme ? "btn_bg_bark" : "btn_bg_lite") : "";
+
   return (
     <button
-      className={`w-[50px] h-[25px] flex justify-between items-center rounded-[30px] cursor-pointer relative ${
-        theme ? "btn_bg_lite" : "btn_bg_bark"
-      }`}
+      className={`w-[50px] h-[25px] flex justify-between items-center rounded-[30px] cursor-pointer relative ${themeColor}`}
       onClick={handleTemperature}
     >
       <span
