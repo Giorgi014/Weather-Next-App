@@ -13,6 +13,12 @@
     rgb(147, 51, 234),
     rgb(37, 99, 235)
   );
+
+  /* LIGHT MODE COLORS ====================== */
+  --sunny_day: linear-gradient(135deg, #74b9ff 0%, #0984e3 50%, #6c5ce7 100%);
+
+  /* DARK MODE COLORS ====================== */
+  --moon_night: linear-gradient(135deg, #2d3436 0%, #6c5ce7 50%, #000000 100%);
 }
 
 @layer utilities {

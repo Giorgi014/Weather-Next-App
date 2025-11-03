@@ -1,5 +1,5 @@
-import { ModeButton } from "../mode/page";
-import { TemperatureButton } from "../temperature/page";
+import { ModeButton } from "./mode/page";
+import { TemperatureButton } from "./temperature/page";
 
 export const Header = () => {
   return (
