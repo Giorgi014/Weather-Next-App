@@ -16,7 +16,7 @@ export default function Home() {
   const themeColor = isDark ? (theme ? "moon_night" : "sunny_day") : "";
 
   return (
-    <div className={`w-screen h-screen p-[1px] overflow-hidden ${themeColor}`}>
+    <div className={`w-screen h-screen p-[1px] overflow-x-hidden ${themeColor}`}>
       <Header />
       <Main />
     </div>

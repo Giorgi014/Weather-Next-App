@@ -41,7 +41,7 @@
     width: 90%;
     max-width: 1920px;
   }
-  .margin_auto{
+  .margin_auto {
     margin: 0 auto;
   }
   .btn_bg_lite {
@@ -61,8 +61,14 @@
     font-family: "InterTight Bold";
     font-size: clamp(40px, 6.6vw, 50px);
   }
+  .main {
+    margin: 50px auto;
+  }
   .inter_medium {
     font-family: "InterTight Medium";
+  }
+  .blur_bg {
+    background: rgba(255, 255, 255, 0.1058823529);
   }
 }
 
