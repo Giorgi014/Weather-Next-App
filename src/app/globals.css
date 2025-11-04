@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "InterTight Bold";
+  src: url(/assets/font/Inter_Tight/static/InterTight-Bold.ttf) format("woff2");
+}
+@font-face {
+  font-family: "InterTight Medium";
+  src: url(/assets/font/Inter_Tight/static/InterTight-Medium.ttf)
+    format("woff2");
+}
+@font-face {
+  font-family: "InterTight Thin";
+  src: url(/assets/font/Inter_Tight/static/InterTight-Thin.ttf) format("woff2");
+}
+
 :root {
   --btn_bg_lite: linear-gradient(
     to right,
@@ -27,6 +41,9 @@
     width: 90%;
     max-width: 1920px;
   }
+  .margin_auto{
+    margin: 0 auto;
+  }
   .btn_bg_lite {
     background: var(--btn_bg_lite);
   }
@@ -39,4 +56,16 @@
   .moon_night {
     background: var(--moon_night);
   }
+  .header {
+    margin: 50px auto;
+    font-family: "InterTight Bold";
+    font-size: clamp(40px, 6.6vw, 50px);
+  }
+  .inter_medium {
+    font-family: "InterTight Medium";
+  }
+}
+
+body {
+  color: #ffffff;
 }
