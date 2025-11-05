@@ -70,6 +70,12 @@
   .blur_bg {
     background: rgba(255, 255, 255, 0.1058823529);
   }
+  .box_shadow {
+    box-shadow: 0px 20px 50px 5px rgba(0, 0, 0, 0.358);
+  }
+  .bg_hover{
+    background: #ffffff6f;
+  }
 }
 
 body {

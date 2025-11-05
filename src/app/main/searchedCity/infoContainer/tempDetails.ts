@@ -5,7 +5,7 @@ export type TempProps = {
   detail: string;
 };
 
-export const tempDetails:TempProps[]  = [
+export const tempDetails: TempProps[] = [
   {
     id: 1,
     img: "/assets/icon/weather-icons-master/svg/wi-thermometer.svg",
@@ -16,19 +16,19 @@ export const tempDetails:TempProps[]  = [
     id: 2,
     img: "/assets/icon/weather-icons-master/svg/wi-humidity.svg",
     info: "Humidity",
-    detail: "18",
+    detail: `18%`,
   },
   {
     id: 3,
     img: "/assets/icon/weather-icons-master/svg/wi-windy.svg",
     info: "Wind Speed",
-    detail: "2.5",
+    detail: `2.5km/h`,
   },
   {
     id: 4,
     img: "/assets/icon/weather-icons-master/svg/wi-barometer.svg",
     info: "Pressure",
-    detail: "1024",
+    detail: `1024hPa`,
   },
   {
     id: 5,
