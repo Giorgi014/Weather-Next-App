@@ -70,6 +70,9 @@
   .inter_medium {
     font-family: "InterTight Medium";
   }
+  .inter_bold {
+    font-family: "InterTight Bold";
+  }
   .blur_bg {
     background: rgba(255, 255, 255, 0.1058823529);
   }
@@ -78,6 +81,12 @@
   }
   .bg_hover {
     background: #ffffff6f;
+  }
+  .head_margin {
+    margin: 20px 0px 20px 25px;
+  }
+  .margin_min {
+    margin: 20px auto;
   }
 }
 
