@@ -64,6 +64,9 @@
   .main {
     margin: 50px auto;
   }
+  .inter_thin {
+    font-family: "InterTight Thin";
+  }
   .inter_medium {
     font-family: "InterTight Medium";
   }
@@ -73,7 +76,7 @@
   .box_shadow {
     box-shadow: 0px 20px 50px 5px rgba(0, 0, 0, 0.358);
   }
-  .bg_hover{
+  .bg_hover {
     background: #ffffff6f;
   }
 }

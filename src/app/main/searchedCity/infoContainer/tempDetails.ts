@@ -34,7 +34,7 @@ export const tempDetails: TempProps[] = [
     id: 5,
     img: "/assets/icon/weather-icons-master/svg/wi-horizon.svg",
     info: "Visibility",
-    detail: "10",
+    detail: `10km`,
   },
   {
     id: 6,

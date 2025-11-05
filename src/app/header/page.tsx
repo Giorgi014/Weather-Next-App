@@ -1,3 +1,4 @@
+import Search from "../search/page";
 import ModeButton from "./mode/page";
 import TemperatureButton from "./temperature/page";
 
@@ -19,6 +20,7 @@ const Header = () => {
         Weather Now
       </h1>
       <p className="mb-5 inter_medium text-[16px]">Your beautiful weather companion</p>
+      <Search />
     </header>
   );
 };

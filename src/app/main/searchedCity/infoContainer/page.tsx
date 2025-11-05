@@ -26,7 +26,7 @@ const InfoContainer = () => {
               {info}
             </p>
             <p
-              className="text-[clamp(14px,1.6vw,16px)] text-amber-50"
+              className="text-[clamp(14px,1.6vw,16px)] inter_medium text-amber-50"
               id={`detail_${id}`}
             >
               {detail}
@@ -57,7 +57,7 @@ const InfoContainer = () => {
             >
               {info}
             </p>
-            <p className="text-[clamp(14px,1.6vw,16px)]text-amber-50">
+            <p className="text-[clamp(14px,1.6vw,16px)] inter_medium text-amber-50">
               {detail}
             </p>
           </div>
