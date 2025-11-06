@@ -88,6 +88,19 @@
   .margin_min {
     margin: 20px auto;
   }
+  .cont_size {
+    width: clamp(120px, 15vw, 200px);
+  }
+  .img_size {
+    width: clamp(50px, 7vw, 70px);
+    height: clamp(50px, 7vw, 70px);
+  }
+  .day_text_size {
+    font-size: clamp(16px, 2vw, 20px);
+  }
+  .weather_text_size {
+    font-size: clamp(13px, 1.5vw, 16px);
+  }
 }
 
 body {
