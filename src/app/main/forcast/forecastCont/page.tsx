@@ -2,11 +2,11 @@ import { forecastDays } from "./forecast";
 
 const ForecastContainer = () => {
   return (
-    <div className="flex justify-around items-center margin_min">
+    <div className="flex justify-around items-center margin_min md:flex-row flex-col gap-y-[28px]">
       {forecastDays.map(({ id, day, img, weather, dayTemp, nightTemp }) => (
         <div
           key={id}
-          className="flex justify-between items-center flex-col gap-2.5 cont_size p-5 blur_bg rounded-[20px] border-amber-50 border-[1px]"
+          className="flex justify-between items-center flex-col gap-2.5 cont_size max-md:!w-full p-5 blur_bg rounded-[20px] border-amber-50 border-[1px]"
         >
           <p className="day_text_size inter_bold">{day}</p>
           <img src={img} alt={img} className="img_size" />
