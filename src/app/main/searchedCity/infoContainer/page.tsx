@@ -34,7 +34,7 @@ const InfoContainer = () => {
           </div>
         ))}
       </div>
-      <div className="sunrise_sunset_container flex flex-col md:flex-row items-center justify-center w-full mx-auto my-5 gap-6 md:gap-12">
+      <div className="sunrise_sunset_container flex items-center justify-center w-full mx-auto my-5 gap-6 md:gap-12">
         {sunItems.map(({ id, img, info, detail }, idx) => (
           <div
             key={id ?? `sun-${idx}`}
