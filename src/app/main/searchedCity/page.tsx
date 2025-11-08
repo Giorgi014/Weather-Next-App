@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from "react";
 import { UseTemp } from "../../hooks/temperatureProvider";
 import InfoContainer from "./infoContainer/page";
