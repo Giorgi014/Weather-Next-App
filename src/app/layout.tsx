@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./hooks/themeProvider";
 import { TemperatureProvider } from "./hooks/temperatureProvider";
+import { WeatherProvider } from "./hooks/weatherProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          <TemperatureProvider>{children}</TemperatureProvider>
+          <TemperatureProvider>
+            <WeatherProvider>{children}</WeatherProvider>
+          </TemperatureProvider>
         </ThemeProvider>
       </body>
     </html>
