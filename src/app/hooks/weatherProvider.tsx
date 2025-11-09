@@ -38,6 +38,7 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
         const res = await fetch(url);
         const data = await res.json();
         console.log(data);
+        return data;
       } catch (err) {
         console.log("Error", err);
       }
@@ -51,8 +52,6 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
   };
 
   return (
-    <WeatherContext.Provider value={{ city, setCity }}>
-      {children}
-    </WeatherContext.Provider>
+    <WeatherContext.Provider value={objc}>{children}</WeatherContext.Provider>
   );
 };
