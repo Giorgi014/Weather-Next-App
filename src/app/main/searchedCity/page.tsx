@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react";
 import { UseTemp } from "../../hooks/temperatureProvider";
 import InfoContainer from "./infoContainer/page";
+import { useWeather } from "../../hooks/weatherProvider";
 
 const SearchedCity = () => {
   const [temp, setTemp] = useState<string>("");
   const { farenheit } = UseTemp();
+  const {city, cityTemp} = useWeather()
 
   useEffect(() => {
     if (farenheit) {
@@ -21,7 +23,7 @@ const SearchedCity = () => {
       <div className="w-full flex justify-center items-center flex-col">
         <div className="text-center inter_medium">
           <h2 className="text-[clamp(40px,6.6vw,60px)]">
-            Batumi,
+            {city},
             <span>GE</span>
           </h2>
           <div className="flex justify-center items-center">
@@ -31,7 +33,7 @@ const SearchedCity = () => {
               className="w-[clamp(40px,6.6vw,70px)] h-[clamp(40px,6.6vw,70px)]"
             />
             <div className="flex justify-center items-center flex-col text-center">
-              <p className="inter_medium text-[clamp(40px,6.6vw,60px)]">{`20°${temp}`}</p>
+              <p className="inter_medium text-[clamp(40px,6.6vw,60px)]">{`${cityTemp}°${temp}`}</p>
               <p className="inter_thin text-[clamp(16px, 2.5vw, 20px)]">
                 CLEAR
               </p>

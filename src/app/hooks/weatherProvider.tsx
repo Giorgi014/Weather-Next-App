@@ -15,6 +15,7 @@ type ProviderProps = {
 export type CityProps = {
   city: string;
   setCity: (value: string) => void;
+  cityTemp: number;
 };
 
 export const WeatherContext = createContext<CityProps | null>(null);
@@ -30,6 +31,7 @@ export const useWeather = () => {
 export const WeatherProvider = ({ children }: ProviderProps) => {
   const key = "c002eabec3dffadff47e3a2e8c28fb4f";
   const [city, setCity] = useState<string>("Batumi");
+  const [cityTemp, setCityTemp] = useState<number>();
 
   useEffect(() => {
     const fetchWeather = async (cityName: string) => {
@@ -37,8 +39,13 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
         const url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${key}`;
         const res = await fetch(url);
         const data = await res.json();
+        const todayTemp = data?.list?.[0];
         console.log(data);
-        return data;
+        if (todayTemp) {
+          setCityTemp(todayTemp.main.temp);
+        }
+        console.log(data);
+        // return data;
       } catch (err) {
         console.log("Error", err);
       }
@@ -49,6 +56,7 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
   const objc = {
     city,
     setCity,
+    cityTemp,
   };
 
   return (
