@@ -2,7 +2,9 @@
 
 import {
   createContext,
+  Dispatch,
   ReactNode,
+  SetStateAction,
   useContext,
   useEffect,
   useState,
@@ -16,6 +18,11 @@ export type CityProps = {
   city: string;
   setCity: (value: string) => void;
   cityTemp: number | undefined;
+  setCityTemp: Dispatch<SetStateAction<number | undefined>>;
+  cityName: string | undefined;
+  setCityName: Dispatch<SetStateAction<string | undefined>>;
+  cityWeather: string | undefined;
+  setCityWeather: Dispatch<SetStateAction<string | undefined>>;
 };
 
 export const WeatherContext = createContext<CityProps | null>(null);
@@ -31,7 +38,9 @@ export const useWeather = () => {
 export const WeatherProvider = ({ children }: ProviderProps) => {
   const key = "c002eabec3dffadff47e3a2e8c28fb4f";
   const [city, setCity] = useState<string>("Batumi");
-  const [cityTemp, setCityTemp] = useState<number | undefined>();
+  const [cityTemp, setCityTemp] = useState<number | undefined>(undefined);
+  const [cityName, setCityName] = useState<string | undefined>(undefined);
+  const [cityWeather, setCityWeather] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const fetchWeather = async (cityName: string) => {
@@ -43,9 +52,11 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
         console.log(data);
         if (todayTemp) {
           setCityTemp(todayTemp.main.temp);
+          setCityName(data.city.country);
+          setCityWeather(todayTemp.weather?.[0].main);
         }
         console.log(data);
-        // return data;
+        return data;
       } catch (err) {
         console.log("Error", err);
       }
@@ -57,6 +68,11 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
     city,
     setCity,
     cityTemp,
+    setCityTemp,
+    cityName,
+    setCityName,
+    cityWeather,
+    setCityWeather,
   };
 
   return (

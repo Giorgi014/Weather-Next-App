@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import { UseTemp } from "../../hooks/temperatureProvider";
@@ -8,7 +8,7 @@ import { useWeather } from "../../hooks/weatherProvider";
 const SearchedCity = () => {
   const [temp, setTemp] = useState<string>("");
   const { farenheit } = UseTemp();
-  const {city, cityTemp} = useWeather()
+  const { city, cityTemp, cityName, cityWeather } = useWeather();
 
   useEffect(() => {
     if (farenheit) {
@@ -23,8 +23,7 @@ const SearchedCity = () => {
       <div className="w-full flex justify-center items-center flex-col">
         <div className="text-center inter_medium">
           <h2 className="text-[clamp(40px,6.6vw,60px)]">
-            {city},
-            <span>GE</span>
+            {city},<span>{cityName}</span>
           </h2>
           <div className="flex justify-center items-center">
             <img
@@ -35,7 +34,7 @@ const SearchedCity = () => {
             <div className="flex justify-center items-center flex-col text-center">
               <p className="inter_medium text-[clamp(40px,6.6vw,60px)]">{`${cityTemp}°${temp}`}</p>
               <p className="inter_thin text-[clamp(16px, 2.5vw, 20px)]">
-                CLEAR
+                {cityWeather}
               </p>
             </div>
           </div>
