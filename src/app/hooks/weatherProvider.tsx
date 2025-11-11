@@ -15,7 +15,7 @@ type ProviderProps = {
 export type CityProps = {
   city: string;
   setCity: (value: string) => void;
-  cityTemp: number;
+  cityTemp: number | undefined;
 };
 
 export const WeatherContext = createContext<CityProps | null>(null);
@@ -31,7 +31,7 @@ export const useWeather = () => {
 export const WeatherProvider = ({ children }: ProviderProps) => {
   const key = "c002eabec3dffadff47e3a2e8c28fb4f";
   const [city, setCity] = useState<string>("Batumi");
-  const [cityTemp, setCityTemp] = useState<number>();
+  const [cityTemp, setCityTemp] = useState<number | undefined>();
 
   useEffect(() => {
     const fetchWeather = async (cityName: string) => {
@@ -53,7 +53,7 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
     fetchWeather(city);
   }, [city]);
 
-  const objc = {
+  const objc: CityProps = {
     city,
     setCity,
     cityTemp,
