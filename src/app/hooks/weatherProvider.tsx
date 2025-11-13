@@ -23,6 +23,20 @@ export type CityProps = {
   setCityName: Dispatch<SetStateAction<string | undefined>>;
   cityWeather: string | undefined;
   setCityWeather: Dispatch<SetStateAction<string | undefined>>;
+  feelsTemp: number | undefined;
+  setFeelsTemp: Dispatch<SetStateAction<number | undefined>>;
+  humidity: number | undefined;
+  setHumidity: Dispatch<SetStateAction<number | undefined>>;
+  wind: number | undefined;
+  setWind: Dispatch<SetStateAction<number | undefined>>;
+  presure: number | undefined;
+  setPresure: Dispatch<SetStateAction<number | undefined>>;
+  visibility: number | undefined;
+  setVisibility: Dispatch<SetStateAction<number | undefined>>;
+  sunrise: number | undefined;
+  setSunrise: Dispatch<SetStateAction<number | undefined>>;
+  sunset: number | undefined;
+  setSunset: Dispatch<SetStateAction<number | undefined>>;
 };
 
 export const WeatherContext = createContext<CityProps | null>(null);
@@ -41,6 +55,13 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
   const [cityTemp, setCityTemp] = useState<number | undefined>(undefined);
   const [cityName, setCityName] = useState<string | undefined>(undefined);
   const [cityWeather, setCityWeather] = useState<string | undefined>(undefined);
+  const [feelsTemp, setFeelsTemp] = useState<number | undefined>(undefined);
+  const [humidity, setHumidity] = useState<number | undefined>(undefined);
+  const [wind, setWind] = useState<number | undefined>(undefined);
+  const [presure, setPresure] = useState<number | undefined>(undefined);
+  const [visibility, setVisibility] = useState<number | undefined>(undefined);
+  const [sunrise, setSunrise] = useState<number | undefined>(undefined);
+  const [sunset, setSunset] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     const fetchWeather = async (cityName: string) => {
@@ -54,6 +75,13 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
           setCityTemp(todayTemp.main.temp);
           setCityName(data.city.country);
           setCityWeather(todayTemp.weather?.[0].main);
+          setFeelsTemp(todayTemp.main.feels_like);
+          setWind(todayTemp.wind?.speed);
+          setHumidity(todayTemp.main.humidity);
+          setPresure(todayTemp.main.pressure);
+          setVisibility(todayTemp.visibility);
+          setSunrise(data.city.sunrise);
+          setSunset(data.city.sunset);
         }
         console.log(data);
         return data;
@@ -73,6 +101,20 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
     setCityName,
     cityWeather,
     setCityWeather,
+    feelsTemp,
+    setFeelsTemp,
+    humidity,
+    setHumidity,
+    wind,
+    setWind,
+    presure,
+    setPresure,
+    visibility,
+    setVisibility,
+    sunrise,
+    setSunrise,
+    sunset,
+    setSunset,
   };
 
   return (
