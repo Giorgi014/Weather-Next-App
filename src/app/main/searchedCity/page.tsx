@@ -11,12 +11,16 @@ const SearchedCity = () => {
   const { city, cityTemp, cityName, cityWeather } = useWeather();
 
   useEffect(() => {
-    if (farenheit) {
-      setTemp("F");
-    } else {
-      setTemp("C");
+    if (cityTemp !== undefined) {
+      if (farenheit) {
+        const f = ((cityTemp - 274.15) * 9) / 5 + 32;
+        setTemp(`${Math.round(f)}°F`);
+      } else {
+        const c = cityTemp - 274.15;
+        setTemp(`${Math.round(c)}°C`);
+      }
     }
-  }, [farenheit]);
+  }, [farenheit, cityTemp]);
 
   return (
     <div className="flex justify-center items-center flex-col w-[90%] max-w-[1920px] p-5 rounded-[20px] main blur_bg box_shadow">
@@ -32,7 +36,9 @@ const SearchedCity = () => {
               className="w-[clamp(40px,6.6vw,70px)] h-[clamp(40px,6.6vw,70px)]"
             />
             <div className="flex justify-center items-center flex-col text-center">
-              <p className="inter_medium text-[clamp(40px,6.6vw,60px)]">{`${cityTemp}°${temp}`}</p>
+              <p className="inter_medium text-[clamp(40px,6.6vw,60px)]">
+                {temp}
+              </p>
               <p className="inter_thin text-[clamp(16px, 2.5vw, 20px)]">
                 {cityWeather}
               </p>
