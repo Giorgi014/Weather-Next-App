@@ -8,26 +8,34 @@ import { useWeather } from "../../hooks/weatherProvider";
 const SearchedCity = () => {
   const [temp, setTemp] = useState<string>("");
   const { farenheit } = UseTemp();
-  const { city, cityTemp, cityName, cityWeather } = useWeather();
+  const { city, data } = useWeather();
 
   useEffect(() => {
-    if (cityTemp !== undefined) {
+    if (data !== undefined) {
       if (farenheit) {
-        const f = ((cityTemp - 274.15) * 9) / 5 + 32;
+        const f = ((data.temp - 274.15) * 9) / 5 + 32;
         setTemp(`${Math.round(f)}°F`);
       } else {
-        const c = cityTemp - 274.15;
+        const c = data.temp - 274.15;
         setTemp(`${Math.round(c)}°C`);
       }
     }
-  }, [farenheit, cityTemp]);
+  }, [farenheit, data]);
+
+  if (!data) {
+    return (
+      <div className="flex justify-center items-center flex-col w-[90%] max-w-[1920px] p-5 rounded-[20px] main blur_bg box_shadow">
+        <p>Loading weather...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex justify-center items-center flex-col w-[90%] max-w-[1920px] p-5 rounded-[20px] main blur_bg box_shadow">
       <div className="w-full flex justify-center items-center flex-col">
         <div className="text-center inter_medium">
           <h2 className="text-[clamp(40px,6.6vw,60px)]">
-            {city},<span>{cityName}</span>
+            {city},<span>{data.country}</span>
           </h2>
           <div className="flex justify-center items-center">
             <img
@@ -40,7 +48,7 @@ const SearchedCity = () => {
                 {temp}
               </p>
               <p className="inter_thin text-[clamp(16px, 2.5vw, 20px)]">
-                {cityWeather}
+                {data.weather}
               </p>
             </div>
           </div>

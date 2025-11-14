@@ -3,16 +3,7 @@ import { tempDetails } from "./tempDetails";
 import { UseTemp } from "@/src/app/hooks/temperatureProvider";
 
 const InfoContainer = () => {
-  const {
-    feelsTemp,
-    setFeelsTemp,
-    humidity,
-    wind,
-    presure,
-    visibility,
-    sunrise,
-    sunset,
-  } = useWeather();
+  const { data } = useWeather();
   const { farenheit } = UseTemp();
 
   const gridItems = tempDetails.slice(0, 5);
@@ -28,13 +19,24 @@ const InfoContainer = () => {
   const formatNumber = (val?: number, suffix = "") =>
     val === undefined ? "—" : `${val}${suffix}`;
 
+  if (!data) {
+    return (
+      <div className="flex justify-center items-center flex-col w-[90%] max-w-[1920px] p-5 rounded-[20px] main blur_bg box_shadow">
+        <p>Loading weather...</p>
+      </div>
+    );
+  }
+
   const detailValues = [
-    formatTemp(feelsTemp),
-    formatNumber(humidity, "%"),
-    formatNumber(wind, " km/h"),
-    formatNumber(presure, " hPa"),
-    formatNumber(visibility ? Math.round(visibility / 1000) : undefined, " km"),
-  ]
+    formatTemp(data.feelsLike),
+    formatNumber(data.humidity, "%"),
+    formatNumber(data.wind, " km/h"),
+    formatNumber(data.pressure, " hPa"),
+    formatNumber(
+      data.visibility ? Math.round(data.visibility / 1000) : undefined,
+      " km"
+    ),
+  ];
 
   return (
     <div className="w-full">

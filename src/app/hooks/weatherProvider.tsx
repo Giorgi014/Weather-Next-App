@@ -2,9 +2,7 @@
 
 import {
   createContext,
-  Dispatch,
   ReactNode,
-  SetStateAction,
   useContext,
   useEffect,
   useState,
@@ -14,32 +12,26 @@ type ProviderProps = {
   children: ReactNode;
 };
 
+type WeatherData = {
+  temp: number;
+  feelsLike: number;
+  humidity: number;
+  wind: number;
+  pressure: number;
+  visibility: number;
+  weather: string;
+  sunrise: number;
+  sunset: number;
+  country: string;
+};
+
 export type CityProps = {
   city: string;
   setCity: (value: string) => void;
-  cityTemp: number | undefined;
-  setCityTemp: Dispatch<SetStateAction<number | undefined>>;
-  cityName: string | undefined;
-  setCityName: Dispatch<SetStateAction<string | undefined>>;
-  cityWeather: string | undefined;
-  setCityWeather: Dispatch<SetStateAction<string | undefined>>;
-  feelsTemp: number | undefined;
-  setFeelsTemp: Dispatch<SetStateAction<number | undefined>>;
-  humidity: number | undefined;
-  setHumidity: Dispatch<SetStateAction<number | undefined>>;
-  wind: number | undefined;
-  setWind: Dispatch<SetStateAction<number | undefined>>;
-  presure: number | undefined;
-  setPresure: Dispatch<SetStateAction<number | undefined>>;
-  visibility: number | undefined;
-  setVisibility: Dispatch<SetStateAction<number | undefined>>;
-  sunrise: number | undefined;
-  setSunrise: Dispatch<SetStateAction<number | undefined>>;
-  sunset: number | undefined;
-  setSunset: Dispatch<SetStateAction<number | undefined>>;
+  data: WeatherData | undefined;
 };
 
-export const WeatherContext = createContext<CityProps | null>(null);
+export const WeatherContext = createContext<CityProps | undefined>(undefined);
 
 export const useWeather = () => {
   const context = useContext(WeatherContext);
@@ -52,39 +44,34 @@ export const useWeather = () => {
 export const WeatherProvider = ({ children }: ProviderProps) => {
   const key = "c002eabec3dffadff47e3a2e8c28fb4f";
   const [city, setCity] = useState<string>("Batumi");
-  const [cityTemp, setCityTemp] = useState<number | undefined>(undefined);
-  const [cityName, setCityName] = useState<string | undefined>(undefined);
-  const [cityWeather, setCityWeather] = useState<string | undefined>(undefined);
-  const [feelsTemp, setFeelsTemp] = useState<number | undefined>(undefined);
-  const [humidity, setHumidity] = useState<number | undefined>(undefined);
-  const [wind, setWind] = useState<number | undefined>(undefined);
-  const [presure, setPresure] = useState<number | undefined>(undefined);
-  const [visibility, setVisibility] = useState<number | undefined>(undefined);
-  const [sunrise, setSunrise] = useState<number | undefined>(undefined);
-  const [sunset, setSunset] = useState<number | undefined>(undefined);
+  const [data, setData] = useState<WeatherData | undefined>(undefined);
 
   useEffect(() => {
     const fetchWeather = async (cityName: string) => {
       try {
         const url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${key}`;
         const res = await fetch(url);
-        const data = await res.json();
-        const todayTemp = data?.list?.[0];
-        console.log(data);
+        const response = await res.json();
+        const todayTemp = response?.list?.[0];
+        console.log(response);
         if (todayTemp) {
-          setCityTemp(todayTemp.main.temp);
-          setCityName(data.city.country);
-          setCityWeather(todayTemp.weather?.[0].main);
-          setFeelsTemp(todayTemp.main.feels_like);
-          setWind(todayTemp.wind?.speed);
-          setHumidity(todayTemp.main.humidity);
-          setPresure(todayTemp.main.pressure);
-          setVisibility(todayTemp.visibility);
-          setSunrise(data.city.sunrise);
-          setSunset(data.city.sunset);
+          setData({
+            temp: todayTemp.main.temp,
+            feelsLike: todayTemp.main.feels_like,
+            humidity: todayTemp.main.humidity,
+            wind: todayTemp.wind?.speed,
+            pressure: todayTemp.main.pressure,
+            visibility: todayTemp.visibility,
+            weather: todayTemp.weather?.[0].main,
+            sunrise: response.city.sunrise,
+            sunset: response.city.sunset,
+            country: response.city.country,
+          });
+        } else {
+          setData(undefined);
         }
-        console.log(data);
-        return data;
+        console.log(response);
+        return response;
       } catch (err) {
         console.log("Error", err);
       }
@@ -95,26 +82,7 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
   const objc: CityProps = {
     city,
     setCity,
-    cityTemp,
-    setCityTemp,
-    cityName,
-    setCityName,
-    cityWeather,
-    setCityWeather,
-    feelsTemp,
-    setFeelsTemp,
-    humidity,
-    setHumidity,
-    wind,
-    setWind,
-    presure,
-    setPresure,
-    visibility,
-    setVisibility,
-    sunrise,
-    setSunrise,
-    sunset,
-    setSunset,
+    data,
   };
 
   return (
