@@ -1,3 +1,5 @@
+"use client"
+
 import { useWeather } from "@/src/app/hooks/weatherProvider";
 import { tempDetails } from "./tempDetails";
 import { UseTemp } from "@/src/app/hooks/temperatureProvider";
@@ -93,6 +95,7 @@ const InfoContainer = () => {
             </p>
             <p className="text-[clamp(14px,1.6vw,16px)] inter_medium text-amber-50">
               {/* {detail} */}
+              12:00
             </p>
           </div>
         ))}
