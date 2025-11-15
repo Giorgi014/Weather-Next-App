@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useWeather } from "@/src/app/hooks/weatherProvider";
 import { tempDetails } from "./tempDetails";
@@ -94,8 +94,15 @@ const InfoContainer = () => {
               {info}
             </p>
             <p className="text-[clamp(14px,1.6vw,16px)] inter_medium text-amber-50">
-              {/* {detail} */}
-              12:00
+              {idx === 0
+                ? new Date(data.sunrise * 1000).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })
+                : new Date(data.sunset * 1000).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
             </p>
           </div>
         ))}

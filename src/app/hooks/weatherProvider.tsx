@@ -51,6 +51,14 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
       try {
         const url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${key}`;
         const res = await fetch(url);
+
+        if (!res.ok) {
+          if (res.status === 500) {
+            throw new Error("SERVER_ERROR");
+          }
+          throw new Error("API_ERROR");
+        }
+
         const response = await res.json();
         const todayTemp = response?.list?.[0];
         console.log(response);
@@ -70,7 +78,10 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
         } else {
           setData(undefined);
         }
-        console.log(response);
+
+        if (response.cod && response.cod !== "200") {
+          throw new Error("API_ERROR");
+        }
         return response;
       } catch (err) {
         console.log("Error", err);
