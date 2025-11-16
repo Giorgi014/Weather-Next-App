@@ -5,7 +5,7 @@ import { IoSearch } from "react-icons/io5";
 import { useWeather } from "../hooks/weatherProvider";
 
 const Search = () => {
-  const { city, setCity } = useWeather();
+  const { city, setCity, error, errorMessage } = useWeather();
   const [searchCity, setSearchCity] = useState<string>(city);
   const prevCity = useRef<string | undefined>(undefined);
 
@@ -14,21 +14,18 @@ const Search = () => {
       setCity(searchCity.trim());
     }
   };
+
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSearch();
     }
   };
-  const handleClear = () => {
-    setSearchCity("");
-  };
 
   useEffect(() => {
-    if (prevCity.current !== undefined) {
+    if (!error) {
       setSearchCity("");
     }
-    handleClear();
-  }, [city]);
+  }, [city, error]);
 
   return (
     <div className="flex justify-between items-center w-[90%] md:w-[70%] max-w-[1920px] h-[50px] rounded-[15px] margin_auto relative">
@@ -38,12 +35,19 @@ const Search = () => {
         placeholder="Search for a city..."
         onChange={(e) => setSearchCity(e.target.value)}
         onKeyPress={handleKeyPress}
-        className="w-full h-full p-2.5 rounded-[15px] border border-amber-50 outline-none text-[16px] blur_bg absolute"
+        className={`w-full h-full p-2.5 rounded-[15px] border outline-none text-[16px] blur_bg absolute ${
+          error ? "border-red-600" : "border-amber-50"
+        }`}
       />
       <IoSearch
         className="absolute right-2.5 text-[20px] cursor-pointer"
         onClick={handleSearch}
       />
+      {error && errorMessage && (
+        <p className="w-full absolute left-2.5 bottom-[-30px] text-[18px] text-red-600">
+          {errorMessage}
+        </p>
+      )}
     </div>
   );
 };
