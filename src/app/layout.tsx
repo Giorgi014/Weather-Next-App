@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "./hooks/themeProvider";
 import { TemperatureProvider } from "./hooks/temperatureProvider";
 import { WeatherProvider } from "./hooks/weatherProvider";
+import { LoaderProvider } from "./hooks/loaderProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,11 +31,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider>
-          <TemperatureProvider>
-            <WeatherProvider>{children}</WeatherProvider>
-          </TemperatureProvider>
-        </ThemeProvider>
+        <LoaderProvider>
+          <ThemeProvider>
+            <TemperatureProvider>
+              <WeatherProvider>{children}</WeatherProvider>
+            </TemperatureProvider>
+          </ThemeProvider>
+        </LoaderProvider>
       </body>
     </html>
   );

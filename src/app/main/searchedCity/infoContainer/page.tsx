@@ -23,7 +23,7 @@ const InfoContainer = () => {
 
   if (!data) {
     return (
-      <div className="flex justify-center items-center flex-col w-[90%] max-w-[1920px] p-5 rounded-[20px] main blur_bg box_shadow">
+      <div className="flex justify-center items-center text-center w-[100%] p-5 rounded-[20px]">
         <p>Loading weather...</p>
       </div>
     );
