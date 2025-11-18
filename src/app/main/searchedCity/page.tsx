@@ -5,6 +5,7 @@ import { UseTemp } from "../../hooks/temperatureProvider";
 import InfoContainer from "./infoContainer/page";
 import { useWeather } from "../../hooks/weatherProvider";
 import { useLoader } from "../../hooks/loaderProvider";
+import WeatherIcon from "./infoContainer/icons";
 
 const SearchedCity = () => {
   const [temp, setTemp] = useState<string>("");
@@ -42,9 +43,8 @@ const SearchedCity = () => {
                 {city},<span>{data.country}</span>
               </h2>
               <div className="flex justify-center items-center">
-                <img
-                  src="/assets/icon/weather-icons-master/svg/wi-day-sunny.svg"
-                  alt="sunny"
+                <WeatherIcon
+                  weather={data.weather}
                   className="w-[clamp(40px,6.6vw,70px)] h-[clamp(40px,6.6vw,70px)]"
                 />
                 <div className="flex justify-center items-center flex-col text-center">
