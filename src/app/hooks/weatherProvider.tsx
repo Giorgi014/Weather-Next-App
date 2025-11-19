@@ -29,6 +29,7 @@ export type CityProps = {
   city: string;
   setCity: (value: string) => void;
   data: WeatherData | undefined;
+  forecastData: any;
   error: boolean;
   errorMessage?: string;
 };
@@ -47,6 +48,7 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
   const key = "c002eabec3dffadff47e3a2e8c28fb4f";
   const [city, setCity] = useState<string>("Batumi");
   const [data, setData] = useState<WeatherData | undefined>(undefined);
+  const [forecastData, setForecastData] = useState<any>(undefined);
   const [error, setError] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | undefined>(
     undefined
@@ -103,6 +105,7 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
             sunset: response.city.sunset,
             country: response.city.country,
           });
+          setForecastData(response);
           setError(false);
           setErrorMessage(undefined);
         } else {
@@ -125,6 +128,7 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
   const objc: CityProps = {
     city,
     setCity,
+    forecastData,
     data,
     error,
     errorMessage,
