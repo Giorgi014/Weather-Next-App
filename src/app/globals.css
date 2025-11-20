@@ -30,9 +30,20 @@
 
   /* LIGHT MODE COLORS ====================== */
   --sunny_day: linear-gradient(135deg, #74b9ff 0%, #0984e3 50%, #6c5ce7 100%);
+  --cloudy_day: linear-gradient(135deg, #2d3436 0%, #b0b0b3 50%, #000000 100%);
+  --rainy_day: linear-gradient(135deg, #374151 0%, #4b5563 50%, #111827 100%);
+  --snowy_day: linear-gradient(135deg, #a0a0a0 0%, #808080 50%, #606060 100%);
 
   /* DARK MODE COLORS ====================== */
   --moon_night: linear-gradient(135deg, #2d3436 0%, #6c5ce7 50%, #000000 100%);
+  --cloudy_night: linear-gradient(
+    135deg,
+    #303030 0%,
+    #1a1f2b 50%,
+    #020405 100%
+  );
+  --rainy_night: linear-gradient(135deg, #0c0f12 0%, #1a2332 50%, #050d16 100%);
+  --snowy_night: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #243447 100%);
 }
 
 @layer utilities {
@@ -53,9 +64,28 @@
   .sunny_day {
     background: var(--sunny_day);
   }
+  .cloudy_day {
+    background: var(--cloudy_day);
+  }
+  .rainy_day {
+    background: var(--rainy_day);
+  }
+  .snowy_day {
+    background: var(--snowy_day);
+  }
   .moon_night {
     background: var(--moon_night);
   }
+  .cloudy_night {
+    background: var(--cloudy_night);
+  }
+  .rainy_night {
+    background: var(--rainy_night);
+  }
+  .snowy_night {
+    background: var(--snowy_night);
+  }
+
   .header {
     margin: 50px auto;
     font-family: "InterTight Bold";

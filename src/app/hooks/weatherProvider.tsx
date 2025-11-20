@@ -39,7 +39,7 @@ export const WeatherContext = createContext<CityProps | undefined>(undefined);
 export const useWeather = () => {
   const context = useContext(WeatherContext);
   if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
+    throw new Error("useWeather must be used within a ThemeProvider");
   }
   return context;
 };
