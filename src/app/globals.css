@@ -173,6 +173,32 @@
     animation-delay: 0.2s;
   }
 
+  .rain_drop {
+    position: fixed;
+    top: -20px;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+  @keyframes fall {
+    to {
+      transform: translateY(105vh);
+    }
+  }
+
+  .snow_drop{
+    animation: fallSnow linear forwards;
+    color: #fff;
+    position: fixed;
+    top: -20px;
+}
+
+@keyframes fallSnow{
+    to{
+        transform: translateY(100vh);
+    }
+}
+
   @keyframes sk-cubeGridScaleDelay {
     0%,
     70%,
