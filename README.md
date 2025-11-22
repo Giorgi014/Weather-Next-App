@@ -68,18 +68,6 @@ Dev dependencies include:
 
 ----
 
-**Environment variables**
-
-Recommended: create a `.env.local` in the project root and add your API key there. Example:
-
-```
-NEXT_PUBLIC_OPENWEATHER_API_KEY=your_openweather_api_key_here
-```
-
-Then replace the hard-coded API key in `src/app/hooks/weatherProvider.tsx` with `process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY` (or update the provider to read `process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY`). Using `NEXT_PUBLIC_` prefix makes the value available on the client-side. For server-only use `OPENWEATHER_API_KEY` and fetch via server components or an API route.
-
-----
-
 **Local installation & development**
 
 1. Install dependencies

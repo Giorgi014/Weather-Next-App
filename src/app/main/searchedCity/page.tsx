@@ -10,7 +10,7 @@ import WeatherIcon from "./infoContainer/icons";
 const SearchedCity = () => {
   const [temp, setTemp] = useState<string>("");
   const { farenheit } = UseTemp();
-  const { city, data } = useWeather();
+  const { data } = useWeather();
   const { showLoader, hideLoader, Loader } = useLoader();
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const SearchedCity = () => {
           ) : (
             <>
               <h2 className="text-[clamp(40px,6.6vw,60px)]">
-                {city},<span>{data.country}</span>
+                {data.city},<span>{data.country}</span>
               </h2>
               <div className="flex justify-center items-center">
                 <WeatherIcon

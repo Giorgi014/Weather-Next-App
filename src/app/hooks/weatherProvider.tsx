@@ -13,6 +13,7 @@ type ProviderProps = {
 };
 
 type WeatherData = {
+  city: string;
   temp: number;
   feelsLike: number;
   humidity: number;
@@ -94,6 +95,7 @@ export const WeatherProvider = ({ children }: ProviderProps) => {
 
         if (todayTemp) {
           setData({
+            city: response.city.name,
             temp: todayTemp.main.temp,
             feelsLike: todayTemp.main.feels_like,
             humidity: todayTemp.main.humidity,

@@ -186,18 +186,18 @@
     }
   }
 
-  .snow_drop{
+  .snow_drop {
     animation: fallSnow linear forwards;
     color: #fff;
     position: fixed;
     top: -20px;
-}
+  }
 
-@keyframes fallSnow{
-    to{
-        transform: translateY(100vh);
+  @keyframes fallSnow {
+    to {
+      transform: translateY(100vh);
     }
-}
+  }
 
   @keyframes sk-cubeGridScaleDelay {
     0%,
@@ -207,6 +207,12 @@
     }
     35% {
       transform: scale3d(0, 0, 1);
+    }
+  }
+
+  @media screen and (max-width: 370px) {
+    .bottom_px {
+      bottom: -50px;
     }
   }
 }
